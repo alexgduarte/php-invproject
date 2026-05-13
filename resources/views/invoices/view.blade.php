@@ -68,6 +68,17 @@
     				<address>
     					<strong>{{ __("Dokumento data") }}</strong><br>
                         {{ $item->document_date }}<br><br>
+                        <strong>{{ __("Apmokėta") }}</strong><br>
+                        {{ $item->paid ? __("Taip") : __("Ne") }}<br><br>
+                        @unless($item->paid)
+                            <form action="{{ route('invoices.mark-paid', $item) }}" method="POST">
+                                @csrf
+                                @method("PATCH")
+                                <button type="submit" class="btn btn-success">
+                                    {{ __("Pažymėti apmokėta") }}
+                                </button>
+                            </form>
+                        @endunless
     				</address>
     			</div>
     		</div>

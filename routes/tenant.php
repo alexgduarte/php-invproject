@@ -77,6 +77,7 @@ Route::middleware([
             Route::get("/invoices/create/{type}", Invoice\RedirectController::class)->name("invoices.redirect");
             Route::get("invoices/create", Invoice\CreateController::class)->name("invoices.create");
             Route::get("invoices/{id}", Invoice\ReadController::class)->name("invoices.read");
+            Route::patch("invoices/{id}/mark-paid", Invoice\MarkPaidController::class)->name("invoices.mark-paid");
             Route::put("invoices/{id}", Invoice\UpdateController::class)->name("invoices.update");
             Route::delete("invoices/{id}", Invoice\DeleteController::class)->name("invoices.delete");
             Route::get("invoices/{id}/edit", Invoice\EditController::class)->name("invoices.edit");
